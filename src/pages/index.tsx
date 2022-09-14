@@ -3,6 +3,7 @@ import Head from "next/head";
 
 //Components
 import { Header } from "../components/Header";
+import { Store } from "../components/Store";
 
 const Home: NextPage = () => {
   return (
@@ -10,11 +11,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Wine - Catálogo de vinhos</title>
       </Head>
-      <Header />
-      
-      <div className="overflow-hidden max-w-[1600px] mx-auto bg-background">
-        olá
-      </div>
+      <Header /> 
+      <main className="bg-background">
+        <Store />
+      </main>
     </>
   );
 };
