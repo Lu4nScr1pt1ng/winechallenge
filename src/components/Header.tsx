@@ -33,7 +33,7 @@ export function Header() {
             <div
               className={` ${
                 navMobile ? "max-h-64" : "max-h-0"
-              } md:hidden absolute top-[4.2rem] w-[100%] mx-auto left-0 right-0 bg-othersgreenlow font-bold transition-all overflow-hidden`}
+              } md:hidden absolute top-[4.2rem] w-[100%] z-10 mx-auto left-0 right-0 bg-othersgreenlow font-bold transition-all overflow-hidden`}
             >
               <NavMobile />
             </div>

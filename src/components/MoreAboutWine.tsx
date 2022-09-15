@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useCart } from "../context/CartContext";
 
+import arrow from "../../public/images/wines/arrow.svg";
+
 type MoreAboutWineProsp = {
   id: number;
   items?: [
@@ -23,15 +25,21 @@ type MoreAboutWineProsp = {
 };
 
 export function MoreAboutWine({ id, items }: MoreAboutWineProsp) {
-    const { increaseCartQuantity } = useCart()
+  const { increaseCartQuantity } = useCart();
   const item = items?.find((i) => i.id == id);
 
   return (
     <>
       <div className="container mx-auto">
-        <div className="flex justify-center py-4 text-[16px] leading-[16px]">
+        <div className="flex justify-center py-4 gap-1 text-[16px] leading-[16px]">
           <p className="text-[#C81A78]">Vinhos</p>
+          <div>
+            <Image src={arrow} height={10} width={8} alt="arrow" />
+          </div>
           <p className="text-[#C81A78]">{item?.country}</p>
+          <div>
+            <Image src={arrow} height={10} width={8} alt="arrow" />
+          </div>
           <p className="text-[#888888]">{item?.region}</p>
         </div>
         <div className="flex flex-col">
@@ -61,19 +69,32 @@ export function MoreAboutWine({ id, items }: MoreAboutWineProsp) {
         </div>
         <div>
           <h2 className="font-bold text-[24px] py-4">Descrição</h2>
-          <p className="text-[#555555] mb-[120px] text-[18px]">{item?.sommelierComment}</p>
+          <p className="text-[#555555] mb-[120px] text-[18px]">
+            {item?.sommelierComment}
+          </p>
         </div>
         <div className="bg-white flex h-[80px] fixed bottom-0 p-1 px-3 right-0 left-0 shadow-[0px_11px_30px_8px_rgba(0,0,0,0.3)]">
-            <div className="flex-1">
-                <p className="text-[#555555] line-through font-bold text-[12px]">R$ 30.007,40</p>
-                <p className="text-[#C81A78] font-bold">R$ <span className="text-[20px]">28.000,00</span></p>
-                <p className="uppercase text-[10px] font-bold text-[#555555] ">preço não-sócio R$ 29.999,90</p>
-            </div>
-            <div className="flex-1 flex items-center justify-center">
-                <button
-                onClick={() => {increaseCartQuantity(item!.id)}} 
-                className="bg-accent hover:bg-accent-hover w-[90%] py-4 font-bold rounded-md text-white">Adicionar</button>
-            </div>
+          <div className="flex-1">
+            <p className="text-[#555555] line-through font-bold text-[12px]">
+              R$ 30.007,40
+            </p>
+            <p className="text-[#C81A78] font-bold">
+              R$ <span className="text-[20px]">28.000,00</span>
+            </p>
+            <p className="uppercase text-[9px] font-bold text-[#555555] ">
+              preço não-sócio R$ 29.999,90
+            </p>
+          </div>
+          <div className="flex-1 flex items-center justify-center">
+            <button
+              onClick={() => {
+                increaseCartQuantity(item!.id);
+              }}
+              className="bg-accent hover:bg-accent-hover w-[90%] py-4 font-bold rounded-md text-white"
+            >
+              Adicionar
+            </button>
+          </div>
         </div>
       </div>
     </>
