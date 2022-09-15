@@ -114,7 +114,7 @@ export function Store() {
                         src={obj.image}
                         alt="vinho"
                         width={124}
-                        height={181}
+                        height={188}
                         layout="responsive"
                         priority
                         />
