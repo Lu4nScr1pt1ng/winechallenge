@@ -40,7 +40,7 @@ export function Header() {
           </div>
           <div className="flex items-center gap-7 md:gap-10">
             <div className="w-[26px] mt-1 md:hidden cursor-pointer">
-              <button>
+              <button aria-label="buscar">
                 <svg
                   width="100%"
                   height="100%"
@@ -58,7 +58,7 @@ export function Header() {
               </button>
             </div>
             <div className="w-[56px] hidden md:flex cursor-pointer">
-              <button>
+              <button aria-label="buscar">
                 <svg
                   width="100%"
                   height="100%"
@@ -83,7 +83,7 @@ export function Header() {
               </button>
             </div>
             <div className="w-[57px] hidden md:flex cursor-pointer">
-              <button>
+              <button aria-label="sua conta">
                 <svg
                   width="56"
                   height="60"
@@ -108,6 +108,7 @@ export function Header() {
             </div>
             <div className="w-[56px] relative cursor-pointer">
               <button
+                aria-label="carrinho de compras"
                 onClick={() => openCart()}
                 className="bg-[#F9B950] w-[56px] h-[56px] overflow-hidden rounded-full"
               >
