@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useCart } from "../context/CartContext";
 import api from "../services/api";
+import Image from "next/image";
 
 export function Store() {
   const [products, setProducts] = useState<any[]>([]);
@@ -109,9 +110,14 @@ export function Store() {
                   <li key={obj.id}>
                     <div className="bg-white rounded-[4px] shadow-md w-[156px] h-[440px] py-4 lg:w-[256px] lg:h-[333px]">
                       <div className="lg:w-[90px] mx-auto">
-                        <picture>
-                          <img src={obj.image} alt="" />
-                        </picture>
+                        <Image 
+                        src={obj.image}
+                        alt="vinho"
+                        width={124}
+                        height={181}
+                        layout="responsive"
+                        priority
+                        />
                       </div>
 
                       <h2 className="font-bold text-center text-[16px] leading-[20px] h-[60px] pt-2">
