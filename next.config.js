@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     remotePatterns: [{
       protocol: 'https',
-      hostname: 'www.wine.com.br',
+      hostname: '**.wine.com.br',
   }]
   }
 }

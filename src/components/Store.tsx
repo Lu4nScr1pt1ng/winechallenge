@@ -3,6 +3,7 @@ import axios from "axios";
 import { useCart } from "../context/CartContext";
 import api from "../services/api";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Store() {
   const [products, setProducts] = useState<any[]>([]);
@@ -108,20 +109,24 @@ export function Store() {
                 {products.map((obj) => (
                   <li key={obj.id}>
                     <div className="bg-white rounded-[4px] shadow-md w-[156px] h-[440px] py-4 lg:w-[256px] lg:h-[333px]">
-                      <div className="lg:w-[90px] mx-auto">
-                        <Image
-                          src={obj.image}
-                          alt="vinho"
-                          width={124}
-                          height={188}
-                          layout="responsive"
-                          priority
-                        />
-                      </div>
-
-                      <h2 className="font-bold text-center text-[16px] leading-[20px] h-[60px] pt-2">
+                      <Link href={`/wines/${obj.id}`}>
+                        <div className="lg:w-[90px] mx-auto cursor-pointer">
+                          <Image
+                            src={obj.image}
+                            alt="vinho"
+                            width={124}
+                            height={188}
+                            layout="responsive"
+                            priority
+                          />
+                        </div>
+                      </Link>
+                      <Link href={`/wines/${obj.id}`}>
+                      <h2 className="font-bold text-center text-[16px] leading-[20px] h-[60px] pt-2 cursor-pointer">
                         {obj.name}
                       </h2>
+                      </Link>
+
                       <div className="flex gap-2 items-center pt-4 justify-center">
                         <p className="text-xs text-[#888888] line-through">
                           R${obj.price}
