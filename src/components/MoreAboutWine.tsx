@@ -73,16 +73,16 @@ export function MoreAboutWine({ id, items }: MoreAboutWineProsp) {
             {item?.sommelierComment}
           </p>
         </div>
-        <div className="bg-white flex h-[80px] fixed bottom-0 p-1 px-3 right-0 left-0 shadow-[0px_11px_30px_8px_rgba(0,0,0,0.3)]">
+        <div className="bg-white flex h-[80px] fixed md:mx-auto md:right-auto md:left-auto md:relative  bottom-0 p-1 px-3 right-0 left-0 shadow-[0px_11px_30px_8px_rgba(0,0,0,0.3)]">
           <div className="flex-1">
             <p className="text-[#555555] line-through font-bold text-[12px]">
-              R$ 30.007,40
+              R$ {item?.price}
             </p>
             <p className="text-[#C81A78] font-bold">
-              R$ <span className="text-[20px]">28.000,00</span>
+              R$ <span className="text-[20px]">{item?.priceMember}</span>
             </p>
             <p className="uppercase text-[9px] font-bold text-[#555555] ">
-              preço não-sócio R$ 29.999,90
+              preço não-sócio R$ {item?.priceNonMember}
             </p>
           </div>
           <div className="flex-1 flex items-center justify-center">
