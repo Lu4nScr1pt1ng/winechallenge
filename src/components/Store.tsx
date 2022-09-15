@@ -8,6 +8,7 @@ import Link from "next/link";
 export function Store() {
   const [products, setProducts] = useState<any[]>([]);
   const [totalItems, setTotalItems] = useState("");
+  const [page, setPage] = useState(1);
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -17,14 +18,23 @@ export function Store() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await api.get("/products?page=1&limit=9");
+      const response = await api.get("/products", {
+        params: {
+          page: page,
+          limit: 9,
+        },
+      });
 
       setProducts(response.data.items);
       setTotalItems(response.data.totalItems);
     }
 
     fetchData();
-  }, []);
+  }, [page]);
+
+  function handlePage(action: string) {
+    setPage(action === "back" ? page - 1 : page + 1);
+  }
 
   return (
     <>
@@ -122,9 +132,9 @@ export function Store() {
                         </div>
                       </Link>
                       <Link href={`/wines/${obj.id}`}>
-                      <h2 className="font-bold text-center text-[16px] leading-[20px] h-[60px] pt-2 cursor-pointer">
-                        {obj.name}
-                      </h2>
+                        <h2 className="font-bold text-center text-[16px] leading-[20px] h-[60px] pt-2 cursor-pointer">
+                          {obj.name}
+                        </h2>
                       </Link>
 
                       <div className="flex gap-2 items-center pt-4 justify-center">
@@ -161,6 +171,29 @@ export function Store() {
                   </li>
                 ))}
               </ul>
+              <div className="flex justify-center items-center py-8">
+                <div className="flex gap-6 items-center">
+                  <button
+                  className="bg-[#B6116E] p-2 hover:bg-[#6d0a42] text-white rounded-md"
+                    disabled={page < 2}
+                    onClick={() => {
+                      handlePage("back");
+                    }}
+                  >
+                    Voltar
+                  </button>
+                  <div>{page}</div>
+                  <button
+                    disabled={page > 6}
+                    onClick={() => {
+                      handlePage("next");
+                    }}
+                    className='bg-[#B6116E] hover:bg-[#6d0a42] p-2 text-white rounded-md'
+                  >
+                    Proxima
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
