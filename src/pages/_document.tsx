@@ -5,6 +5,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-br">
         <Head>
+          <meta
+            name="description"
+            content="Os melhores vinhos na melhor loja de vinho."
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
