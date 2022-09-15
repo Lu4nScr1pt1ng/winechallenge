@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useCart } from "../context/CartContext";
+import api from "../services/api";
 
 export function Store() {
   const [products, setProducts] = useState<any[]>([]);
   const [totalItems, setTotalItems] = useState("");
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useCart();
 
-  const api = axios.create({
-    baseURL: "https://wine-back-test.herokuapp.com",
-  });
 
   useEffect(() => {
     async function fetchData() {
@@ -30,13 +35,13 @@ export function Store() {
             </h3>
             <p className="py-8 text-[#333333] font-bold">Por preço</p>
             <div className="flex flex-col gap-5">
-            <div className="flex items-center gap-x-6">
+              <div className="flex items-center gap-x-6">
                 <input
                   type="radio"
                   className="w-[15.89px] h-[16px] outline-none border-[1px] border-[#888888]"
                   name="maxminvalue"
                   id=""
-                  checked
+                  defaultChecked
                 />
                 <p className="text-[#1D1D1B]">Qualquer valor</p>
               </div>
@@ -135,8 +140,10 @@ export function Store() {
                         </p>
                       </div>
                     </div>
-                    <div className="flex justify-center py-2 mt-2 rounded-[4px] bg-[#7EBC43]">
-                      <button className="text-white uppercase font-bold">
+                    <div>
+                      <button
+                      onClick={() => increaseCartQuantity(obj.id)} 
+                      className="text-white uppercase font-bold py-2 w-full mt-2 rounded-[4px] bg-[#7EBC43]">
                         Adicionar
                       </button>
                     </div>

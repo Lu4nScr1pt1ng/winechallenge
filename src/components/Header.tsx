@@ -1,12 +1,14 @@
 import { useState } from "react";
 
 import { HiMenu, HiX } from "react-icons/hi";
+import { useCart } from "../context/CartContext";
 
 import { Nav } from "./Nav";
 import { NavMobile } from "./NavMobile";
 
 export function Header() {
   const [navMobile, setNavMobile] = useState(false);
+  const { cartQuantity, openCart } = useCart()
 
   return (
     <header className="bg-white mb-3 md:border-b-[2px] md:shadow-sm md:border-b-neutral-200">
@@ -106,12 +108,14 @@ export function Header() {
               </button>
             </div>
             <div className="w-[56px] relative cursor-pointer">
-              <button className="bg-[#F9B950] w-[56px] h-[56px] overflow-hidden rounded-full">
+              <button
+              onClick={() => openCart()} 
+              className="bg-[#F9B950] w-[56px] h-[56px] overflow-hidden rounded-full">
                 <picture className="relative -right-[9px] top-[5px]">
                   <img src="/images/header/Group.svg" alt="" />
                 </picture>
                 <div className="bg-white w-[24px] h-[24px] rounded-full flex items-center justify-center absolute top-[30px] right-[-3px]">
-                  <p className="text-[#00B495]">0</p>
+                  <p className="text-[#00B495]">{cartQuantity ? cartQuantity : '0'}</p>
                 </div>
               </button>
             </div>
