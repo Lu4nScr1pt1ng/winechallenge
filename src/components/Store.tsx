@@ -14,7 +14,6 @@ export function Store() {
     removeFromCart,
   } = useCart();
 
-
   useEffect(() => {
     async function fetchData() {
       const response = await api.get("/products?page=1&limit=9");
@@ -110,13 +109,13 @@ export function Store() {
                   <li key={obj.id}>
                     <div className="bg-white rounded-[4px] shadow-md w-[156px] h-[440px] py-4 lg:w-[256px] lg:h-[333px]">
                       <div className="lg:w-[90px] mx-auto">
-                        <Image 
-                        src={obj.image}
-                        alt="vinho"
-                        width={124}
-                        height={188}
-                        layout="responsive"
-                        priority
+                        <Image
+                          src={obj.image}
+                          alt="vinho"
+                          width={124}
+                          height={188}
+                          layout="responsive"
+                          priority
                         />
                       </div>
 
@@ -148,8 +147,9 @@ export function Store() {
                     </div>
                     <div>
                       <button
-                      onClick={() => increaseCartQuantity(obj.id)} 
-                      className="text-white uppercase font-bold py-2 w-full mt-2 rounded-[4px] bg-[#7EBC43]">
+                        onClick={() => increaseCartQuantity(obj.id)}
+                        className="text-white uppercase font-bold py-2 w-full mt-2 rounded-[4px] bg-accent hover:bg-accent-hover"
+                      >
                         Adicionar
                       </button>
                     </div>

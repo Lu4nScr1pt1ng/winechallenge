@@ -44,7 +44,7 @@ export function Cart({ isOpen }: CartProps) {
             </div>
             <div>
               {cartQuantity > 0 ? (
-                <button className="w-full mx-auto bg-[#7EBC43] rounded-md py-2 text-white">
+                <button className="w-full mx-auto bg-accent hover:bg-accent-hover rounded-md py-2 text-white">
                   Finalizar compra
                 </button>
               ) : (

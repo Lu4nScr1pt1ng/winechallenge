@@ -22,7 +22,16 @@ module.exports = {
     },
     extend: {
       colors: {
+        background: "#f5f8fa",
         brandblue: "#115d8c",
+        accent: {
+          DEFAULT: '#7ebc43',
+          hover: '#3e5e21',
+        },
+        removebtn: {
+          DEFAULT: '#db1818',
+          hover: '#6d0c0c'
+        },
         brandorange: "#f25d27",
         textostitulos: "#123952",
         textostextos: "#617480",
@@ -35,7 +44,7 @@ module.exports = {
         othersbluelow: "#dde9f0",
         othersorangelow: "#ffa585",
         othersyellow: "#efb866",
-        background: "#f5f8fa"
+
         },
     },
   },
