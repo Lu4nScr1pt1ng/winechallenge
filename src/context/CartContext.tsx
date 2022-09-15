@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { Cart } from "../components/Cart";
+import api from "../services/api";
 
 type CartProviderProps = {
   children: ReactNode;
@@ -30,6 +31,7 @@ export function useCart() {
 export function CartProvider({ children }: CartProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
 
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
@@ -91,7 +93,7 @@ export function CartProvider({ children }: CartProviderProps) {
         cartItems,
         cartQuantity,
         openCart,
-        closeCart
+        closeCart,
       }}
     >
       {children}
