@@ -26,7 +26,7 @@ export function Cart({ isOpen }: CartProps) {
   return (
     <>
       {isOpen ? (
-        <div className="bg-white top-0 max-w-[320px] font-nav p-2 right-0 absolute">
+        <div className="bg-white top-0 max-w-[200px] md:max-w-[320px] font-nav p-2 right-0 absolute">
           <div className="p-2">
             <div>
               <button onClick={closeCart}>

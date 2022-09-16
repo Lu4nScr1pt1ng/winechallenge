@@ -7,7 +7,8 @@ const nextConfig = {
       protocol: 'https',
       hostname: '**.wine.com.br',
   }]
-  }
+  },
+  reactStrictMode: false,
 }
 
 module.exports = nextConfig

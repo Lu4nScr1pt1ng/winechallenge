@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState, useEffect } from "react";
 import { Cart } from "../components/Cart";
+import { CartItem } from "../components/CartItem";
 import api from "../services/api";
 
 type CartProviderProps = {
@@ -82,6 +83,17 @@ export function CartProvider({ children }: CartProviderProps) {
       return currItems.filter((item) => item.id !== id);
     });
   }
+
+  useEffect(() => {
+    const cartStorage = localStorage.getItem('cart');
+    if(cartStorage) {
+      setCartItems(JSON.parse(cartStorage));
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems))
+  }, [cartItems])
 
   return (
     <CartContext.Provider
